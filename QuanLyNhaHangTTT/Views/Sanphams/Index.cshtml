@@ -1,30 +1,36 @@
 ﻿@model IEnumerable<QuanLyNhaHangTTT.Models.Sanpham>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách món ăn";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
+    <a href="@Url.Action("Create")">Tạo mới món ăn</a>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Tên_món_ăn)
+            @*@Html.DisplayNameFor(model => model.Tên_món_ăn)*@
+            Tên món ăn
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Số_lượng)
+            @*@Html.DisplayNameFor(model => model.Số_lượng)*@
+             Số lượng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Giá_tiền)
+            @*@Html.DisplayNameFor(model => model.Giá_tiền)*@
+             Giá tiền
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Mô_tả)
+            @*@Html.DisplayNameFor(model => model.Mô_tả)*@
+             Mô tả
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Loaisanpham.Tên_loại_SP)
+            @*@Html.DisplayNameFor(model => model.Loaisanpham.Tên_loại_SP)*@
+            Tên loại SP
         </th>
         <th></th>
     </tr>
@@ -32,24 +38,31 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Tên_món_ăn)
+            @*@Html.DisplayFor(modelItem => item.Tên_món_ăn)*@
+            @item.Tên_món_ăn
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Số_lượng)
+            @*@Html.DisplayFor(modelItem => item.Số_lượng)*@
+            @item.Số_lượng
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Giá_tiền)
+            @*@Html.DisplayFor(modelItem => item.Giá_tiền)*@
+            @item.Giá_tiền
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Mô_tả)
+            @*@Html.DisplayFor(modelItem => item.Mô_tả)*@
+            @item.Mô_tả
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Loaisanpham.Tên_loại_SP)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Mã_SP }) |
+            @*<a href="@Url.Action("Edit", new {item.Mã_SP})">Chỉnh sửa</a> |*@
             @Html.ActionLink("Details", "Details", new { id=item.Mã_SP }) |
+            @*<a href="@Url.Action("Details", new {item.Mã_SP})">Chi tiết</a> |*@
             @Html.ActionLink("Delete", "Delete", new { id=item.Mã_SP })
+            @*<a href="@Url.Action("Delete", new {item.Mã_SP})">Xóa</a>*@ 
         </td>
     </tr>
 }
