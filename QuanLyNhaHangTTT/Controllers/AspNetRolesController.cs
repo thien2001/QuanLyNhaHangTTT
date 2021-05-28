@@ -10,113 +10,108 @@ using QuanLyNhaHangTTT.Models;
 
 namespace QuanLyNhaHangTTT.Controllers
 {
-    [Authorize(Roles = "Admin") ]
-    public class SanphamsController : Controller
+    public class AspNetRolesController : Controller
     {
         private CT25Team111Entities db = new CT25Team111Entities();
 
-        // GET: Sanphams
+        // GET: AspNetRoles
         public ActionResult Index()
         {
-            var sanphams = db.Sanphams.Include(s => s.Loaisanpham);
-            return View(sanphams.ToList());
+            return View(db.AspNetRoles.ToList());
         }
 
-        // GET: Sanphams/Details/5
+        // GET: AspNetRoles/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sanpham sanpham = db.Sanphams.Find(id);
-            if (sanpham == null)
+            AspNetRole aspNetRole = db.AspNetRoles.Find(id);
+            if (aspNetRole == null)
             {
                 return HttpNotFound();
             }
-            return View(sanpham);
+            return View(aspNetRole);
         }
 
-        // GET: Sanphams/Create
+        // GET: AspNetRoles/Create
         public ActionResult Create()
         {
-            ViewBag.Mã_loại_SP = new SelectList(db.Loaisanphams, "Mã_loại_SP", "Tên_loại_SP");
             return View();
         }
 
-        // POST: Sanphams/Create
+        // POST: AspNetRoles/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Mã_SP,Mã_loại_SP,Tên_món_ăn,Số_lượng,Giá_tiền,Mô_tả")] Sanpham sanpham)
+        public ActionResult Create([Bind(Include = "Id,Name")] AspNetRole aspNetRole)
         {
             if (ModelState.IsValid)
             {
-                db.Sanphams.Add(sanpham);
+                aspNetRole.Id = Guid.NewGuid().ToString();
+                db.AspNetRoles.Add(aspNetRole);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Mã_loại_SP = new SelectList(db.Loaisanphams, "Mã_loại_SP", "Tên_loại_SP", sanpham.Mã_loại_SP);
-            return View(sanpham);
+            return View(aspNetRole);
         }
 
-        // GET: Sanphams/Edit/5
+        // GET: AspNetRoles/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sanpham sanpham = db.Sanphams.Find(id);
-            if (sanpham == null)
+            AspNetRole aspNetRole = db.AspNetRoles.Find(id);
+            if (aspNetRole == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Mã_loại_SP = new SelectList(db.Loaisanphams, "Mã_loại_SP", "Tên_loại_SP", sanpham.Mã_loại_SP);
-            return View(sanpham);
+            return View(aspNetRole);
         }
 
-        // POST: Sanphams/Edit/5
+        // POST: AspNetRoles/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Mã_SP,Mã_loại_SP,Tên_món_ăn,Số_lượng,Giá_tiền,Mô_tả")] Sanpham sanpham)
+        public ActionResult Edit([Bind(Include = "Id,Name")] AspNetRole aspNetRole)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sanpham).State = EntityState.Modified;
+                db.Entry(aspNetRole).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Mã_loại_SP = new SelectList(db.Loaisanphams, "Mã_loại_SP", "Tên_loại_SP", sanpham.Mã_loại_SP);
-            return View(sanpham);
+            return View(aspNetRole);
         }
 
-        // GET: Sanphams/Delete/5
+        // GET: AspNetRoles/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sanpham sanpham = db.Sanphams.Find(id);
-            if (sanpham == null)
+            AspNetRole aspNetRole = db.AspNetRoles.Find(id);
+            if (aspNetRole == null)
             {
                 return HttpNotFound();
             }
-            return View(sanpham);
+            return View(aspNetRole);
         }
 
-        // POST: Sanphams/Delete/5
+        // POST: AspNetRoles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Sanpham sanpham = db.Sanphams.Find(id);
-            db.Sanphams.Remove(sanpham);
+            AspNetRole aspNetRole = db.AspNetRoles.Find(id);
+            db.AspNetRoles.Remove(aspNetRole);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -36,6 +36,7 @@ namespace QuanLyNhaHangTTT.Tests.Controllers
 
             // Assert
             Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
@@ -48,6 +49,7 @@ namespace QuanLyNhaHangTTT.Tests.Controllers
             ViewResult result = controller.Contact() as ViewResult;
 
             // Assert
+            Assert.AreEqual("Your contact page.", result.ViewBag.Message);
             Assert.IsNotNull(result);
         }
     }
