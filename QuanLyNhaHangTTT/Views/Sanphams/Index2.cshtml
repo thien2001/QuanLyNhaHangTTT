@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<QuanLyNhaHangTTT.Models.Sanpham>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -216,41 +217,17 @@
 <div class="menu-w3l" id="menu">
     <h3 class="w3l-title">Menu</h3>
     <ul id="flexiselDemo1">
-        <li>
-            <div class="w3layouts_banner_bottom_left">
-                <img src="@Url.Content("~/a/images/s1.jpg")" alt=" " class="img-responsive" />
-                <h4>Noodles --- <span>$5</span></h4>
-                <p>Morbi eu justo suscipit.</p>
-            </div>
-        </li>
-        <li>
-            <div class="w3layouts_banner_bottom_left">
-                <img src="@Url.Content("~/a/images/s2.jpg")" alt=" " class="img-responsive" />
-                <h4>Ice-Cream --- <span>$7</span></h4>
-                <p>Morbi eu justo suscipit.</p>
-            </div>
-        </li>
-        <li>
-            <div class="w3layouts_banner_bottom_left">
-                <img src="@Url.Content("~/a/images/s5.jpg")" alt=" " class="img-responsive" />
-                <h4>Lemon Fruit --- <span>$3</span></h4>
-                <p>Morbi eu justo suscipit.</p>
-            </div>
-        </li>
-        <li>
-            <div class="w3layouts_banner_bottom_left">
-                <img src="@Url.Content("~/a/images/s4.jpg")" alt=" " class="img-responsive" />
-                <h4>SeaFood --- <span>$8</span></h4>
-                <p>Morbi eu justo suscipit.</p>
-            </div>
-        </li>
-        <li>
-            <div class="w3layouts_banner_bottom_left">
-                <img src="@Url.Content("~/a/images/s3.jpg")" alt=" " class="img-responsive" />
-                <h4>Breakfast Bun--- <span>$3</span></h4>
-                <p>Morbi eu justo suscipit.</p>
-            </div>
-        </li>
+        @foreach (var sanpham in Model) { 
+            <li>
+                <div class="w3layouts_banner_bottom_left">
+                    <img src="@Url.Content("~/a/images/s1.jpg")" alt=" " class="img-responsive" />
+                    <h4>@sanpham.Tên_món_ăn --- <span>@sanpham.Giá_tiền@("đ")</span></h4>
+                    
+                </div>
+            </li>
+        }
+        
+
     </ul>
 </div>
 <!-- //menu-section -->
