@@ -21,6 +21,14 @@ namespace QuanLyNhaHangTTT.Controllers
             var sanphams = db.Sanphams.Include(s => s.Loaisanpham);
             return View(sanphams.ToList());
         }
+        
+        [AllowAnonymous]
+        // for customer
+        public ActionResult Index2()
+        {
+            var sanphams = db.Sanphams.Include(s => s.Loaisanpham);
+            return View(sanphams.ToList());
+        }
 
         // GET: Sanphams/Details/5
         public ActionResult Details(string id)
