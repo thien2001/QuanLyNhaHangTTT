@@ -22,7 +22,18 @@ namespace QuanLyNhaHangTTT.Controllers
             var sanphams = db.Sanphams.Include(s => s.Loaisanpham);
             return View(sanphams.ToList());
         }
-        
+
+        [AllowAnonymous]
+        public ActionResult Search(String keyword)
+        {
+            var model = db.Sanphams.ToList();
+            model = model.Where(p => p.Tên_món_ăn.ToLower().Contains(keyword.ToLower())).ToList();
+            ViewBag.Keyword = keyword;
+            return View("Index2",model);
+
+        }
+
+
         [AllowAnonymous]
         // for customer
         public ActionResult Index2()
@@ -31,19 +42,17 @@ namespace QuanLyNhaHangTTT.Controllers
             return View(sanphams.ToList());
         }
 
+        [AllowAnonymous]
         // GET: Sanphams/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Sanpham sanpham = db.Sanphams.Find(id);
-            if (sanpham == null)
+           
+            var model = db.Sanphams.Find(id);
+            if (model == null)
             {
                 return HttpNotFound();
             }
-            return View(sanpham);
+            return View(model);
         }
         [AllowAnonymous]
         public ActionResult Picture(string Mã_SP)

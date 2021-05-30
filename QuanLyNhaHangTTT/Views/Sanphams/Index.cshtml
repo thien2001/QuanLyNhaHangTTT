@@ -42,8 +42,8 @@
 <tr>
     <td>
         @*@Html.DisplayFor(modelItem => item.Tên_món_ăn)*@
-        @*<a href="@Url.Action("Details", new {item.Mã_SP })" target="_blank">@item.Tên_món_ăn </a>*@
-        @item.Tên_món_ăn
+        <a href="@Url.Action("Details", new {id=item.Mã_SP })" target="_blank">@item.Tên_món_ăn </a>
+        @*@item.Tên_món_ăn*@
     </td>
     <td>
         @*@Html.DisplayFor(modelItem => item.Số_lượng)*@
