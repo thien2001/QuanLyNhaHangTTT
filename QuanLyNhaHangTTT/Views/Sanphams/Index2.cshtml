@@ -220,7 +220,7 @@
         @foreach (var sanpham in Model) { 
             <li>
                 <div class="w3layouts_banner_bottom_left">
-                    <img src="@Url.Content("~/a/images/s1.jpg")" alt=" " class="img-responsive" />
+                    <img src="@Url.Action("Picture" , "Sanphams", new { sanpham.Mã_SP })" width="300px" height="220px" alt=" demo picture "  />
                     <h4>@sanpham.Tên_món_ăn --- <span>@sanpham.Giá_tiền@("đ")</span></h4>
                     
                 </div>
