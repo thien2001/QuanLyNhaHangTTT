@@ -215,13 +215,16 @@
 <!-- //team -->
 <!-- menu-section -->
 <div class="menu-w3l" id="menu">
-    <h3 class="w3l-title">Menu</h3>
+    <h3 class="w3l-title">@(ViewBag.Keyword !=null ? "Search Result" : "All Products")</h3>
     <ul id="flexiselDemo1">
         @foreach (var sanpham in Model) { 
+
             <li>
                 <div class="w3layouts_banner_bottom_left">
-                    <img src="@Url.Action("Picture" , "Sanphams", new { sanpham.Mã_SP })" width="300px" height="220px" alt=" demo picture "  />
-                    <h4>@sanpham.Tên_món_ăn --- <span>@sanpham.Giá_tiền@("đ")</span></h4>
+                    <a href="@Url.Action("Details", new {id=sanpham.Mã_SP })">
+                        <img src="@Url.Action("Picture" , "Sanphams", new { sanpham.Mã_SP })" width="300px" height="220px" alt=" demo picture " />
+                    </a>
+                    <h4> @sanpham.Tên_món_ăn --- <span>@sanpham.Giá_tiền.ToString("N0") đ  </span></h4>
                     
                 </div>
             </li>
