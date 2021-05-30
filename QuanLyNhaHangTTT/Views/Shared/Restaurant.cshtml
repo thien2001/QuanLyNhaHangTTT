@@ -57,7 +57,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                                     {
                                         @Html.AntiForgeryToken()
 
-                                        <a class="btn header-btn" href="javascript:document.getElementById('logoutForm').submit()">log out</a> }
+                                        <a class="btn header-btn" href="javascript:document.getElementById('logoutForm').submit()">Log out</a> }
                                 }
                                 else
                                 {
@@ -93,18 +93,19 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                     </div>
                     <!-- //Slider -->
                     <!-- form -->
-
-                   
                     <!-- //form -->
                 </div>
             </div>
-            
+
         </div>
     </div>
     <!-- //banner -->
 
-
-    @RenderBody();
+    <section class="latest-product-area padding-bottom">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </section>
     <!-- footer -->
     <div class="footer" id="contact">
         <div class="container">
@@ -149,12 +150,11 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
-                
+
                 <div class="clearfix"> </div>
             </div>
         </div>
         <!-- copyright -->
-        
         <!-- //copyright -->
     </div>
 
