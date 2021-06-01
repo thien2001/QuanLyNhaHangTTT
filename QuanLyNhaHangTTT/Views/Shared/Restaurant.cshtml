@@ -4,6 +4,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+@using QuanLyNhaHangTTT.Models
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,16 +53,16 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-8 col-xs-8 w3_menu">
-                            <div class="col-md-3 col-sm-3 col-xs-3 top-nav-text">
+                            <div class="col-md-2 col-sm-2 col-xs-2 top-nav-text">
                                 <a class="page-scroll" href="@Url.Action("Index2", "Sanphams")">Home</a>
                             </div>
-                            <div class="col-md-3 col-sm-3 col-xs-3 top-nav-text">
+                            <div class="col-md-2 col-sm-2 col-xs-2 top-nav-text">
                                 <a class="page-scroll" href="@Url.Action("About", "Home")">About</a>
                             </div>
-                            <div class="col-md-3 col-sm-3 col-xs-3 top-nav-text">
+                            <div class="col-md-2 col-sm-2 col-xs-2 top-nav-text">
                                 <a class="page-scroll" href="@Url.Action("Contact", "Home")">Contact</a>
                             </div>
-                            <div class="col-md-3 col-sm-3 col-xs-3 top-nav-text">
+                            <div class="col-md-2 col-sm-2 col-xs-2 top-nav-text">
                                 @if (Request.IsAuthenticated)
                                 {
                                     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
@@ -74,6 +75,11 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
                                 {
                                     <a href="@Url.Action("Login", "Account")">Log in</a>}
                             </div>
+                            <div class="col-md-2 col-sm-2 col-xs-2 top-nav-text">
+                                <a class="page-scroll" href="@Url.Action("Index", "ShoppingCart")">Cart</a>
+                                @((Session["ShoppingCart"] as List <Chitietdonhang>)?.Count)
+</div>
+
 
 
                         </div>
